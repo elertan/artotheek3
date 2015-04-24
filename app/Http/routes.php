@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'IndexController@index');
 
-Route::get('home', 'HomeController@index');
+Route::get('/artwork', 'ArtworkController@index');
+Route::get('/artist', 'ArtistController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
