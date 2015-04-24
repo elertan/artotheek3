@@ -14,7 +14,9 @@
 Route::get('/', 'IndexController@index');
 
 Route::get('/artwork', 'ArtworkController@index');
+
 Route::get('/artist', 'ArtistController@index');
+Route::get('/artist/{id}', 'ArtistController@show');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

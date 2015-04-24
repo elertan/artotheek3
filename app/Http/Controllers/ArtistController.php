@@ -15,14 +15,10 @@ class ArtistController extends Controller {
 	 */
 	public function index()
 	{
-		$artists = Artist::all();
-		foreach ($artists as $artist) 
-		{
-			foreach ($artist->getArtworks() as $artwork) 
-			{
-				echo $artwork->name;
-			}
-		}
+		$artists = Artist::allWithoutUnknown();
+		return view('artist/index', [
+			'artists' => $artists
+		]);
 	}
 
 	/**
@@ -53,7 +49,14 @@ class ArtistController extends Controller {
 	 */
 	public function show($id)
 	{
-		//
+		$artist = Artist::find($id);
+		if (!$artist) {
+			return view('errors/404');
+		} else {
+			return view('artist/show', [
+				'artist' => $artist
+			]);
+		}
 	}
 
 	/**

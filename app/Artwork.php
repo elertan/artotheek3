@@ -9,4 +9,9 @@ class Artwork extends Model {
 		return $this->belongsTo('\App\Artist', 'artist_id');
 	}
 
+	public function getImagePath()
+	{
+		return asset('images/artworks/' . $this->id . '.jpg');
+	}
+
 }
