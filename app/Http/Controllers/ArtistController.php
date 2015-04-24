@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Artist;
 
 class ArtistController extends Controller {
 
@@ -14,7 +15,14 @@ class ArtistController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		$artists = Artist::all();
+		foreach ($artists as $artist) 
+		{
+			foreach ($artist->getArtworks() as $artwork) 
+			{
+				echo $artwork->name;
+			}
+		}
 	}
 
 	/**
