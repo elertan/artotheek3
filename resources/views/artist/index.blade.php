@@ -16,5 +16,8 @@
 		</div>
 		@endforeach
 	</div>
+	<div class="container">
+		<a href="/">Terug naar de homepage</a>
+	</div>
 </div>
 @endsection
