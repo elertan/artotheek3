@@ -14,4 +14,9 @@ class Artwork extends Model {
 		return asset('images/artworks/' . $this->id . '.jpg');
 	}
 
+	public function getGalleryImagePath()
+	{
+		return asset('images/artworks/gallery/' . $this->id . '.jpg');
+	}
+
 }

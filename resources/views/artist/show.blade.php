@@ -32,7 +32,7 @@
 	<div class="container" style="margin-top: 20px;">
 		<ul class="row">
 			@foreach ($artist->getArtworks() as $artwork)
-			<li style="list-style: none; margin-bottom: 25px;" class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img src="{{ $artwork->getImagePath() }}" style="cursor: pointer;" data-description="{{ $artwork->description }}" data-artist-id="{{ $artwork->artist->id }}" class="img-responsive img-artwork"></li>
+			<li style="list-style: none; margin-bottom: 25px;" class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img src="{{ $artwork->getGalleryImagePath() }}"  data-image="{{ $artwork->getImagePath() }}" style="cursor: pointer;" data-description="{{ $artwork->description }}" data-artist-id="{{ $artwork->artist->id }}" data-artist-name="{{ $artwork->artist->name }}" class="img-responsive img-artwork"></li>
 			@endforeach
 		</ul>
 	</div>
