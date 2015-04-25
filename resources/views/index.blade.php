@@ -1,28 +1,13 @@
 @extends('layouts/default')
 
 @section('content')
-<script>
-	$(function () {
-		$('#btnArtworks').click(function () {
-			window.location.assign('/artwork');
-		});
-		$('#btnArtists').click(function () {
-			window.location.assign('/artist');
-		});
-	});
-</script>
-<div class="jumbotron">
-	<div class="container">
-		<div class="col-md-6">
-			<button id="btnArtworks" class="btn btn-default center-block">
-				Artworks
-			</button>
-		</div>
-		<div class="col-md-6">
-			<button id="btnArtists" class="btn btn-default center-block">
-				Artists
-			</button>
-		</div>
-	</div>
+<div class="container">
+	<p>Heel veel informatie over de artotheek</p>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	@endsection
 </div>
-@endsection
