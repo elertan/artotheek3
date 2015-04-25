@@ -34,9 +34,6 @@
 			@endforeach
 		</ul>
 	</div>
-	<div class="container">
-		<a href="/artist">Terug naar artiesten</a>
-	</div>
 </div>
 </div>
 <div class="modal fade" id="modal-preview" tabindex="-1" role="dialog" aria-labelledby="Image" aria-hidden="true">
