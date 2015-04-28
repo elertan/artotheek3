@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Artwork;
+use App\ArtworkState;
 
 class ArtworkController extends Controller {
 

@@ -26,12 +26,33 @@
 	<div class="container">
 		<input type="text" class="form-control" placeholder="Zoek...">
 	</div>
-	<div class="container" style="margin-top: 20px;">
+    <div class="container" style="margin-top: 20px;">
+        <h3>Published</h3>
+		<ul class="row">
+            @foreach ($artworks as $artwork)
+                @if ($artwork->state == 2)
+                    <li style="list-style: none; margin-bottom: 25px;" class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img src="{{ $artwork->getGalleryImagePath() }}"  data-image="{{ $artwork->getImagePath() }}" style="cursor: pointer;" data-description="{{ $artwork->description }}" data-artist-id="{{ $artwork->artist->id }}" data-artist-name="{{ $artwork->artist->name }}" class="img-responsive img-artwork"></li>
+                @endif
+			@endforeach
+        </ul>
+        @if (Auth::check())
+        <h3>Pending</h3>
 		<ul class="row">
 			@foreach ($artworks as $artwork)
-			<li style="list-style: none; margin-bottom: 25px;" class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img src="{{ $artwork->getGalleryImagePath() }}"  data-image="{{ $artwork->getImagePath() }}" style="cursor: pointer;" data-description="{{ $artwork->description }}" data-artist-id="{{ $artwork->artist->id }}" data-artist-name="{{ $artwork->artist->name }}" class="img-responsive img-artwork"></li>
+	                @if ($artwork->state == 1)
+                    <li style="list-style: none; margin-bottom: 25px;" class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img src="{{ $artwork->getGalleryImagePath() }}"  data-image="{{ $artwork->getImagePath() }}" style="cursor: pointer;" data-description="{{ $artwork->description }}" data-artist-id="{{ $artwork->artist->id }}" data-artist-name="{{ $artwork->artist->name }}" class="img-responsive img-artwork"></li>
+                @endif
 			@endforeach
 		</ul>
+        <h3>Archived</h3>
+		<ul class="row">
+            @foreach ($artworks as $artwork)
+                @if ($artwork->state == 0)
+                    <li style="list-style: none; margin-bottom: 25px;" class="col-lg-2 col-md-2 col-sm-3 col-xs-4"><img src="{{ $artwork->getGalleryImagePath() }}"  data-image="{{ $artwork->getImagePath() }}" style="cursor: pointer;" data-description="{{ $artwork->description }}" data-artist-id="{{ $artwork->artist->id }}" data-artist-name="{{ $artwork->artist->name }}" class="img-responsive img-artwork"></li>
+                @endif
+			@endforeach
+		</ul>
+        @endif
 	</div>
 	<div class="container">
 		<a href="/">Terug naar de homepage</a>
