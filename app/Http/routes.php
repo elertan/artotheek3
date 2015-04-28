@@ -13,6 +13,7 @@
 Route::get('/', 'IndexController@index');
 
 Route::get('/artwork', 'ArtworkController@index');
+Route::get('/artwork/json', 'ArtworkController@json');
 Route::get('/artwork/{id}', 'ArtworkController@show');
 
 Route::get('/artist', 'ArtistController@index');

@@ -21,6 +21,14 @@
 </script>
 </head>
 <body>
+@if (Auth::check())
+    <div class="jumbotron">
+        <div class="container">
+            <h4>Administration Tools</h4>
+            <a href="/auth/logout/" style="float:right;">Logout</a>
+        </div>
+    </div>
+@endif
 <div class="jumbotron">
 	<div class="container">
 		<div class="col-md-4">

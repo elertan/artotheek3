@@ -14,7 +14,7 @@ class ArtworkController extends Controller {
 	 * @return Response
 	 */
 	public function index()
-	{	
+	{
 		$artworks = Artwork::all();
 		return view('artwork/index', [
 			'artworks' => $artworks
@@ -83,6 +83,11 @@ class ArtworkController extends Controller {
 	public function destroy($id)
 	{
 		//
-	}
+    }
+
+    public function json() {
+        $artworks = Artwork::all();
+        return response()->json((array)$artworks);
+    }
 
 }

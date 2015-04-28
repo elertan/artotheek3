@@ -20,7 +20,7 @@ class AdministrationController extends Controller {
 	 */
 	public function index()
 	{
-        return "You are logged in! <a href=\"/auth/logout\" style=\"margin-left: 20px;\">Logout!</a>";
+        return redirect()->action('\App\Http\Controllers\IndexController@index');
 	}
 
 	/**
