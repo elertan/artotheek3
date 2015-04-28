@@ -4,9 +4,14 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use Image;
 
-class IndexController extends Controller {
+class AdministrationController extends Controller {
+
+
+	public function __construct()
+    {
+		$this->middleware('auth');
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -14,8 +19,8 @@ class IndexController extends Controller {
 	 * @return Response
 	 */
 	public function index()
-    {
-		return view('index');
+	{
+        return "You are logged in! <a href=\"/auth/logout\" style=\"margin-left: 20px;\">Logout!</a>";
 	}
 
 	/**

@@ -22,7 +22,7 @@ class Authenticate {
 	{
 		$this->auth = $auth;
 	}
-
+	
 	/**
 	 * Handle an incoming request.
 	 *

@@ -10,7 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
 Route::get('/', 'IndexController@index');
 
 Route::get('/artwork', 'ArtworkController@index');
@@ -18,6 +17,8 @@ Route::get('/artwork/{id}', 'ArtworkController@show');
 
 Route::get('/artist', 'ArtistController@index');
 Route::get('/artist/{id}', 'ArtistController@show');
+
+Route::get('/admin', 'AdministrationController@index');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
