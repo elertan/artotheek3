@@ -17,6 +17,9 @@
 		$('#btnArtists').click(function () {
 			window.location.assign('/artist');
 		});
+		$('#btnNews').click(function () {
+			window.location.assign('/news');
+		});
 	});
 </script>
 </head>
@@ -31,19 +34,24 @@
 @endif
 <div class="jumbotron">
 	<div class="container">
-		<div class="col-md-4">
+		<div class="col-md-3">
 			<button id="btnHome" class="btn btn-default center-block">
 				Home
 			</button>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-3">
 			<button id="btnArtworks" class="btn btn-default center-block">
 				Artworks
 			</button>
 		</div>
-		<div class="col-md-4">
+		<div class="col-md-3">
 			<button id="btnArtists" class="btn btn-default center-block">
 				Artists
+			</button>
+		</div>
+		<div class="col-md-3">
+			<button id="btnNews" class="btn btn-default center-block">
+				Nieuws
 			</button>
 		</div>
 

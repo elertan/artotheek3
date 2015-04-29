@@ -19,6 +19,8 @@ Route::get('/artwork/{id}', 'ArtworkController@show');
 Route::get('/artist', 'ArtistController@index');
 Route::get('/artist/{id}', 'ArtistController@show');
 
+Route::get('/news', 'NewsController@index');
+
 Route::get('/admin', 'AdministrationController@index');
 
 Route::controllers([
