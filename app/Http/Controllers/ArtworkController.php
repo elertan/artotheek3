@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Artwork;
 use App\ArtworkState;
@@ -28,8 +29,13 @@ class ArtworkController extends Controller {
 	 * @return Response
 	 */
 	public function create()
-	{
-		//
+    {
+        // Is admin?
+        if (Auth::check()) {
+            return view('artwork/create-admin');
+        } else {
+            return view('artwork/create');
+        }
 	}
 
 	/**
