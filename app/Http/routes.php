@@ -21,9 +21,11 @@ Route::get('/artist', 'ArtistController@index');
 Route::get('/artist/{id}', 'ArtistController@show');
 
 Route::get('/news', 'NewsController@index');
+Route::get('/news/{id}/edit', 'NewsController@edit');
 Route::get('/news/create', 'NewsController@create');
 Route::post('/news/store', 'NewsController@store');
 Route::delete('/news/{id}', 'NewsController@destroy');
+Route::post('/news/update/{id}', 'NewsController@update');
 
 Route::get('/admin', 'AdministrationController@index');
 

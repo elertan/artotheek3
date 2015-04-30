@@ -45,7 +45,7 @@ class NewsController extends Controller
 
         // process the login
         if ($validator->fails()) {
-            return Redirect::to('news/create')
+            return \Redirect::to('news/create')
                 ->withErrors($validator)
                 ->withInput(\Input::except('password'));
         } else {
@@ -56,7 +56,6 @@ class NewsController extends Controller
             $article->save();
 
             // redirect
-            \Session::flash('message', 'Artikel gecreerd!');
             return \Redirect::to('news');
         }
 	}
@@ -80,7 +79,11 @@ class NewsController extends Controller
 	 */
 	public function edit($id)
 	{
-		//
+		// get the article
+        $article = NewsArticle::find($id);
+
+        // show the edit form and pass the article
+        return view('news/edit')->with('article', $article);
 	}
 
 	/**
@@ -91,7 +94,28 @@ class NewsController extends Controller
 	 */
 	public function update($id)
 	{
-		//
+		// validate
+        $rules = array(
+            'title' => 'required',
+            'content' => 'required',
+        );
+        $validator = \Validator::make(\Input::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) {
+            return \Redirect::to('news/' . $id . '/edit')
+                ->withErrors($validator)
+                ->withInput(\Input::except('password'));
+        } else {
+            // store
+            $article = NewsArticle::find($id);
+            $article->title = \Input::get('title');
+            $article->content = \Input::get('content');
+            $article->save();
+
+            // redirect
+            return \Redirect::to('/news');
+        }
 	}
 
 	/**
@@ -106,8 +130,6 @@ class NewsController extends Controller
         $article->delete();
 
         // redirect
-        \Session::flash('message', 'Artikel succesvol verwijderd');
         return\ Redirect::to('news');
 	}
-
 }
