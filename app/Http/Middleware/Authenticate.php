@@ -22,7 +22,7 @@ class Authenticate {
 	{
 		$this->auth = $auth;
 	}
-	
+
 	/**
 	 * Handle an incoming request.
 	 *
@@ -40,7 +40,7 @@ class Authenticate {
 			}
 			else
 			{
-				return redirect()->guest('auth/login');
+				return redirect()->guest('administration/login');
 			}
 		}
 
