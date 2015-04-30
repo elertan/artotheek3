@@ -26,7 +26,7 @@ class NewsController extends Controller
 	 */
 	public function create()
 	{
-		//
+		return view('news/create');
 	}
 
 	/**
@@ -36,7 +36,29 @@ class NewsController extends Controller
 	 */
 	public function store()
 	{
-		//
+		 // validate
+        $rules = array(
+            'title'       => 'required',
+            'content'      => 'required',
+        );
+        $validator = \Validator::make(\Input::all(), $rules);
+
+        // process the login
+        if ($validator->fails()) {
+            return Redirect::to('news/create')
+                ->withErrors($validator)
+                ->withInput(\Input::except('password'));
+        } else {
+            // store
+            $article = new NewsArticle;
+            $article->title = \Input::get('title');
+            $article->content = \Input::get('content');
+            $article->save();
+
+            // redirect
+            \Session::flash('message', 'Artikel gecreerd!');
+            return \Redirect::to('news');
+        }
 	}
 
 	/**
@@ -80,7 +102,12 @@ class NewsController extends Controller
 	 */
 	public function destroy($id)
 	{
-		//
+        $article = NewsArticle::find($id);
+        $article->delete();
+
+        // redirect
+        \Session::flash('message', 'Artikel succesvol verwijderd');
+        return\ Redirect::to('news');
 	}
 
 }

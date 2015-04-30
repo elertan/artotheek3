@@ -26,8 +26,9 @@
 <body>
 @if (Auth::check())
     <div class="jumbotron">
+    <h4>Administration Tools</h4>
         <div class="container">
-            <h4>Administration Tools</h4>
+            <a href="/news/create">Nieuw artikel toevoegen</a>	
             <a href="/auth/logout/" style="float:right;">Logout</a>
         </div>
     </div>

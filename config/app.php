@@ -135,6 +135,7 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
         'Illuminate\View\ViewServiceProvider',
+        'Illuminate\Html\HtmlServiceProvider',
        'Intervention\Image\ImageServiceProvider',
 
 		/*
@@ -145,6 +146,7 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
+
 
 	],
 
@@ -193,7 +195,9 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
         'View'      => 'Illuminate\Support\Facades\View',
-        'Image' => 'Intervention\Image\Facades\Image'
+        'Image' => 'Intervention\Image\Facades\Image',
+        'Form' => 'Illuminate\Html\FormFacade',
+		'HTML' => 'Illuminate\Html\HtmlFacade',
 
 	],
 
