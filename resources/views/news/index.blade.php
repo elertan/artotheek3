@@ -8,12 +8,12 @@
 		btnDelete.click(function () {
 			if (confirm('Weet je zeker dat je dit artikel wilt verwijderen?')) {
 				$.post('news/' + $(this).data('article-id'), {
-					_token: $(this).parent().parent().find('input[name=_token]').attr('value'),
-					_method: 'DELETE'
-				}, function (data, code) {
+					_token: $(this).parent().parent().find('input[name=_token]').attr('value'), // Token from form
+					_method: 'DELETE' // DELETE to pass to laravel
+				}, function (data, code) { // Response
 
 				});
-				$(this).parent().parent().parent().remove(); // Removes article
+				$(this).parent().parent().parent().remove(); // Removes article from page
 			}
 		});
 	});
