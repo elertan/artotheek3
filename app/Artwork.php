@@ -19,4 +19,14 @@ class Artwork extends Model {
 		return asset('images/artworks/gallery/' . $this->id . '.jpg');
 	}
 
+	public function getTags()
+	{
+		$tagpivots = \App\ArtworkTagPivot::where('artwork_id', $this->id)->get();
+		$tags = [];
+		foreach ($tagpivots as $tagpivot) {
+			$tags[] = \App\Tag::find($tagpivot->tag_id);
+		}
+		return $tags;
+	}
+
 }

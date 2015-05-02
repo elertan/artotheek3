@@ -18,7 +18,17 @@ class Artist extends Model {
 
 	public function getArtworks()
 	{
-		return Artwork::where('artist_id',$this->id)->get();
+		return Artwork::where('artist_id', $this->id)->get();
+	}
+
+	public function getTags()
+	{
+		$tagpivots = \App\ArtistTagPivot::where('artist_id', $this->id)->get();
+		$tags = [];
+		foreach ($tagpivots as $tagpivot) {
+			$tags[] = \App\Tag::find($tagpivot->tag_id);
+		}
+		return $tags;
 	}
 
 }
