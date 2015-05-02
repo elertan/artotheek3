@@ -1,6 +1,23 @@
 @extends('../layouts/default')
 
 @section('content')
+	<script type="text/javascript">
+	$(function () {
+		// Handles the delete function
+		var btnDelete = $('.btn-delete');
+		btnDelete.click(function () {
+			if (confirm('Weet je zeker dat je dit artikel wilt verwijderen?')) {
+				$.post('news/' + $(this).data('article-id'), {
+					_token: $(this).parent().parent().find('input[name=_token]').attr('value'),
+					_method: 'DELETE'
+				}, function (data, code) {
+
+				});
+				$(this).parent().parent().parent().remove(); // Removes article
+			}
+		});
+	});
+	</script>
 	@foreach ($news->reverse() as $article)
 		<div class="jumbotron" style="padding:0;">
 			<h2 style="text-align:center;margin-top:0px;">{{$article->title}}</h2>
@@ -13,10 +30,9 @@
                 </div>
 
 				{!! Form::open(array('url' => 'news/' . $article->id ))!!}
-                    {!! Form::hidden('_method', 'DELETE') !!}
-                    <div style="text-align: center;padding-bottom:10px;">
-                   		{!!Form::submit('Verwijderen', array('class' => 'btn btn-warning')) !!}
-                    </div>
+                <div style="text-align: center;padding-bottom:10px;">
+               		<button type="button" class="btn btn-warning btn-delete" data-article-id="{{ $article->id }}">Verwijderen</button>
+                </div>
                 {!! Form::close() !!}               
 			@endif
 		</div>
