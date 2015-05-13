@@ -1,4 +1,3 @@
-
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
@@ -6,6 +5,7 @@ use App\Http\Controllers\Controller;
 use App\NewsArticle;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class NewsController extends Controller 
 {
@@ -27,6 +27,8 @@ class NewsController extends Controller
 	 */
 	public function create()
 	{
+		if (!Auth::check()) { return view('auth/login'); }
+		$this->middleware('auth');
 		return view('news/create');
 	}
 
@@ -69,7 +71,12 @@ class NewsController extends Controller
 	 */
 	public function show($id)
 	{
-		//
+		$article = NewsArticle::find($id);
+		if (!$article) {
+			return view('errors/404');
+		} else {
+			return view('news/show', array('article' => $article));
+		}
 	}
 
 	/**
@@ -80,11 +87,14 @@ class NewsController extends Controller
 	 */
 	public function edit($id)
 	{
+		if (!Auth::check()) { return view('auth/login'); }
 		// get the article
         $article = NewsArticle::find($id);
-
-        // show the edit form and pass the article
-        return view('news/edit')->with('article', $article);
+        if (!$article) {
+			return view('errors/404');
+		} else {
+			return view('news/edit')->with('article', $article);
+		}
 	}
 
 	/**
@@ -122,15 +132,14 @@ class NewsController extends Controller
 	/**
 	 * Remove the specified resource from storage.
 	 *
-	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy()
 	{
-        $article = NewsArticle::find($id);
+		if (!Auth::check()) { return view('auth/login'); }
+		$article = NewsArticle::find(\Input::get('id'));
         $article->delete();
-
         // redirect
-        return\ Redirect::to('news');
+        //return\ Redirect::to('news');
 	}
 }

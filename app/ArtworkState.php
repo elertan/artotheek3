@@ -5,3 +5,9 @@ abstract class ArtworkState {
     const pending = 1;
     const published = 2;
 }
+
+abstract class Mark {
+ 
+
+    
+}

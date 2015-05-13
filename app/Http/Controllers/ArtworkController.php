@@ -7,6 +7,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Artwork;
 use App\ArtworkState;
+use Input;
 
 class ArtworkController extends Controller {
 
@@ -95,6 +96,21 @@ class ArtworkController extends Controller {
     public function json() {
         $artworks = Artwork::all();
         return response()->json((array)$artworks);
+    }
+
+    public function setState() {
+    	$id = Input::get('id');
+    	$state = Input::get('newstate');
+
+    	$artwork = Artwork::find($id);
+
+    	if (!$artwork) {
+    		return App::abort(404, 'No such artwork');
+    	} else {
+    		$artwork->state = (int)$state;
+    		$artwork->save();
+    	}
+
     }
 
 }

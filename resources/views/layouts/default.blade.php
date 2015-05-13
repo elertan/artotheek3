@@ -28,7 +28,6 @@
     <div class="jumbotron">
     <h4>Administration Tools</h4>
         <div class="container">
-            <a href="/news/create">Nieuw artikel toevoegen</a>	
             <a href="/auth/logout/" style="float:right;">Logout</a>
         </div>
     </div>

@@ -1,7 +1,7 @@
 @extends('../layouts/default')
 
 @section('content')
-<h1>edit {{$article->title}}</h1>
+<h1>Artikel Wijzigen</h1>
 
 {!! HTML::ul($errors->all()) !!}
 

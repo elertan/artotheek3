@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Image;
+use App\NewsArticle;
 
 class IndexController extends Controller {
 
@@ -15,7 +16,8 @@ class IndexController extends Controller {
 	 */
 	public function index()
     {
-		return view('index');
+    	$articles = NewsArticle::orderBy('id', 'DESC')->get();
+		return view('index', array('articles' => $articles));
 	}
 
 	/**
